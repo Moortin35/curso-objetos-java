@@ -1,6 +1,5 @@
 package testherencia.testherencia;
 
-
 public class TestHerencia {
 
     public static void main(String[] args) {
@@ -18,5 +17,19 @@ public class TestHerencia {
         nuevo2.setNombreConsultor("La araña que pica");
         nuevo2.setNombre("Julián");
         System.out.println("El nombre del consultor es: "+ nuevo2.getNombreConsultor());
+        
+        Persona vector[] = new Persona[5];
+        vector [0] = new Persona();
+        vector [1] = new Empleado();
+        vector [2] = new Consultor();
+        vector [3] = new Jefe();
+        
+        Persona perso = new Persona();
+        Consultor consu = new Consultor();
+        perso = consu;
+        /*
+        no funciona al reves:
+        consu = perso;
+        */
     }
 }
