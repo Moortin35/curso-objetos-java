@@ -1,14 +1,13 @@
 package clasesabstractas;
 
-public class Circulo extends Figura {
+public class Circulo implements Figura, Dibujable, Rotable {
 
     private double radio;
 
     public Circulo() {
     }
 
-    public Circulo(double radio, double x, double y) {
-        super(x, y);
+    public Circulo(double radio) {
         this.radio = radio;
     }
     
@@ -17,6 +16,16 @@ public class Circulo extends Figura {
         double pi = 3.14;
         double resultado = pi * radio * radio;
         return resultado;
+    }
+
+    @Override
+    public void dibujar() {
+        System.out.println("Hola, estoy dibujando un círculo");
+    }
+
+    @Override
+    public void rotar() {
+        System.out.println("Hola, estoy rotando un círculo");
     }
     
 }

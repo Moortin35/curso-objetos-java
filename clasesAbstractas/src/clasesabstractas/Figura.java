@@ -1,17 +1,7 @@
 package clasesabstractas;
 
-public abstract class Figura {
+public interface Figura {
     
-    protected double x; //pos en x
-    protected double y; //pos en y
-
-    protected Figura() {
-    }
+    public double calcularArea();
     
-    protected Figura(double x, double y) {
-        this.x = x;
-        this.y = y;
-    }  
-    
-    public abstract double calcularArea();
 }
