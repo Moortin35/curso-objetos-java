@@ -39,6 +39,10 @@ public class Persona {
         this.edad = edad;
     }
     
+    public String toString(){
+        return "Persona{" + "num: " + num + ", nombre: " + nombre + ", edad: "
+                + edad + "}";
+    }
     
     
 }
