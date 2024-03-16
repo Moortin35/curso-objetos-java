@@ -1,7 +1,7 @@
 package com.mycompany.jpatest;
 import com.mycompany.jpatest.logica.Alumno;
+import com.mycompany.jpatest.logica.Carrera;
 import com.mycompany.jpatest.logica.Controladora;
-import java.util.ArrayList;
 import java.util.Date;
 
 public class JPATest {
@@ -9,23 +9,25 @@ public class JPATest {
     public static void main(String[] args) {
 
         Controladora control = new Controladora();
-        /*Alumno alu = new Alumno(15, "Nicolo", "Dapdullom", new Date());
-        control.crearAlumno(alu);
-        //control.eliminarAlumno(15);
         
-        alu.setApellido("Godofredo San");
-        control.editarAlumno(alu);
-        */
-        Alumno alu = control.traerAlumno(15);
-        System.out.println("--------------Búsqueda individual--------------");
-        System.out.println("El alumno es: " + alu.toString());
-        System.out.println(""); 
-        System.out.println("--------------Búsqueda completa--------------");
-        ArrayList<Alumno> listaAlumnos = control.traerListaAlumnos();
-        for(Alumno aluAux : listaAlumnos){
-            System.out.println("El alumno es: " + aluAux.toString());
-        }
+        //Creación de Carrera
+        Carrera carrera1 = new Carrera(1, "Licenciatura en Cs. de la Computación");
         
-    
+        //Guardado de Carrera en DB
+        //control.crearCarrera(carrera1);
+        
+        
+        //Creación de Alumno(Ahora con carrera incluída).
+        Alumno nuevoalu = new Alumno(16, "Inda", "Lecio", new Date(), carrera1);
+        
+        //Guardado de Alumno en DB
+        
+        //Mostrar resultado.
+        System.out.println("----------------------------------------");
+        System.out.println("------------Datos del Alumno------------");
+        Alumno alu = control.traerAlumno(16);
+        System.out.println("Alumno: " + alu.getNombre() + " " + alu.getApellido());
+        System.out.println("Cursa la carrera: " + alu.getCarre().getNombre());
+        
     }
 }
