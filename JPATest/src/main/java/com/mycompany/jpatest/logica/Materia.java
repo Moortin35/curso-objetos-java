@@ -1,30 +1,27 @@
 package com.mycompany.jpatest.logica;
 
 import java.io.Serializable;
-import java.util.LinkedList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
-public class Carrera implements Serializable {
+public class Materia implements Serializable {
     
     @Id
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
     private String nombre;
-    @OneToMany
-    private LinkedList<Materia> listaMaterias;
+    private String tipo;
 
-    public Carrera() {
+    public Materia() {
     }
 
-    public Carrera(int id, String nombre, LinkedList<Materia> listaMaterias) {
+    public Materia(int id, String nombre, String tipo) {
         this.id = id;
         this.nombre = nombre;
-        this.listaMaterias = listaMaterias;
+        this.tipo = tipo;
     }
 
     public int getId() {
@@ -43,15 +40,13 @@ public class Carrera implements Serializable {
         this.nombre = nombre;
     }
 
-    public LinkedList<Materia> getListaMaterias() {
-        return listaMaterias;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setListaMaterias(LinkedList<Materia> listaMaterias) {
-        this.listaMaterias = listaMaterias;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
-    
-    
     
     
 }
