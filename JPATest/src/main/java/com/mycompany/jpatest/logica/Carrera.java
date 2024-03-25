@@ -15,7 +15,8 @@ public class Carrera implements Serializable {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private int id;
     private String nombre;
-    @OneToMany
+    
+    @OneToMany(mappedBy="carre")
     private LinkedList<Materia> listaMaterias;
 
     public Carrera() {
