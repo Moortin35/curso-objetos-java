@@ -240,13 +240,13 @@ public class CargaDatos extends javax.swing.JFrame {
         
         controladora.guardar(nombreMascota, razaMascota, colorMascota, observaciones,
                 nombreDuenio, celDuenio, esAlergico, atencionEspecial);
-        /*
+        
         JOptionPane optionPane = new JOptionPane("Se guardó correctamente");
         optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
         JDialog dialog = optionPane.createDialog("Guardado Exitoso");
         dialog.setAlwaysOnTop(true);
         dialog.setVisible(true);
-        */
+        
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
