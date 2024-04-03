@@ -142,7 +142,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAltaActionPerformed
 
     private void btnBajaConsultaEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBajaConsultaEliminarActionPerformed
-        // TODO add your handling code here:
+        VerAutos pantallaVerAutos = new VerAutos();
+        pantallaVerAutos.setVisible(true);
+        pantallaVerAutos.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnBajaConsultaEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -300,7 +300,7 @@
               <Font name="Dialog" size="36" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Venta de Autom&#xf3;viles"/>
+            <Property name="text" type="java.lang.String" value="Modificar Autom&#xf3;vil"/>
           </Properties>
         </Component>
       </SubComponents>

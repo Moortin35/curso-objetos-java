@@ -1,16 +1,22 @@
 package com.mycompany.concesionaria.igu;
 
+import com.mycompany.concesionaria.logica.Automovil;
 import com.mycompany.concesionaria.logica.ControladoraLogica;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
-public class AltaAuto extends javax.swing.JFrame {
+public class ModificarAuto extends javax.swing.JFrame {
 
-    public AltaAuto() {
+    ControladoraLogica controladoraLog = null;
+    Automovil auto = new Automovil();
+    
+    public ModificarAuto(int idAuto) {
+        controladoraLog = new ControladoraLogica();
         initComponents();
+        cargarDatosAuto(idAuto);
     }
     
-    ControladoraLogica controladoraLog = new ControladoraLogica();
+
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -174,7 +180,7 @@ public class AltaAuto extends javax.swing.JFrame {
 
         txtTitulo.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         txtTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtTitulo.setText("Venta de Automóviles");
+        txtTitulo.setText("Modificar Automóvil");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -221,17 +227,22 @@ public class AltaAuto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+
+        //Todos los datos del auto
+            
         String modelo = txtModelo.getText();
         String marca = txtMarca.getText();
         String motor = txtMotor.getText();
         String color = txtColor.getText();
         String patente = txtPatente.getText();
         String cantidadPuertas = (String) cmbCantPuertas.getSelectedItem();
-        
-        controladoraLog.agregarAutomovil(modelo, marca, motor, color, patente, cantidadPuertas);
-        mostrarMensaje("Se ha agregado con éxito un automóvil","Info","Guardado Exitoso");
-    
+                
+        controladoraLog.modificarAutomovil(auto, modelo, marca, motor, color, patente, cantidadPuertas);
+        mostrarMensaje("Modificación realizada con éxito", "Info", "Modificación exitosa");
+        VerAutos pantallaVerAutos = new VerAutos();
+        pantallaVerAutos.setVisible(true);
+        pantallaVerAutos.setLocationRelativeTo(null);
+        this.dispose();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void cmbCantPuertasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCantPuertasActionPerformed
@@ -246,20 +257,7 @@ public class AltaAuto extends javax.swing.JFrame {
         txtPatente.setText("");
         cmbCantPuertas.setSelectedIndex(0);
     }//GEN-LAST:event_btnLimpiarActionPerformed
-    
-    public void mostrarMensaje(String mensaje, String tipo, String titulo){
-        JOptionPane optionPane = new JOptionPane(mensaje);
-        if(tipo.equals("Info")){
-            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
-        }
-        else if(tipo.equals("Error")){
-            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
-        }
-        JDialog dialog = optionPane.createDialog(titulo);
-        dialog.setAlwaysOnTop(true);
-        dialog.setVisible(true);
-    }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
@@ -281,4 +279,34 @@ public class AltaAuto extends javax.swing.JFrame {
     private javax.swing.JTextField txtPatente;
     private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatosAuto(int idAuto) {
+        auto = controladoraLog.traerAuto(idAuto);
+        txtModelo.setText(auto.getModelo());
+        txtMarca.setText(auto.getMarca());
+        txtMotor.setText(auto.getMotor());
+        txtColor.setText(auto.getColor());
+        txtPatente.setText(auto.getPatente());
+        if (auto.getCantidadPuertas().equals("2")) {
+            cmbCantPuertas.setSelectedIndex(1);
+        }
+        else{
+            if(auto.getCantidadPuertas().equals("4")) {
+                cmbCantPuertas.setSelectedIndex(2);
+            }
+        }       
+    }
+    
+    public void mostrarMensaje(String mensaje, String tipo, String titulo){
+        JOptionPane optionPane = new JOptionPane(mensaje);
+        if(tipo.equals("Info")){
+            optionPane.setMessageType(JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if(tipo.equals("Error")){
+            optionPane.setMessageType(JOptionPane.ERROR_MESSAGE);
+        }
+        JDialog dialog = optionPane.createDialog(titulo);
+        dialog.setAlwaysOnTop(true);
+        dialog.setVisible(true);
+    }
 }
