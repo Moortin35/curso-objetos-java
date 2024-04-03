@@ -5,7 +5,8 @@
 package com.mycompany.peluqueriacanina.persistencia;
 
 import com.mycompany.peluqueriacanina.logica.Duenio;
-import com.mycompany.peluqueriacanina.persistencia.exceptions.NonexistentEntityException;
+import com.mycompany.peluqueriacanina.persistencia.exceptions.
+        NonexistentEntityException;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;

@@ -85,7 +85,9 @@ public class Mascota implements Serializable {
         this.persona = persona;
     }
 
-    public Mascota(int numCliente, String nombre, String raza, String color, String alergico, String atencionEsp, String observaciones, Duenio persona) {
+    public Mascota(int numCliente, String nombre, String raza, 
+            String color, String alergico, String atencionEsp, 
+            String observaciones, Duenio persona) {
         this.numCliente = numCliente;
         this.nombre = nombre;
         this.raza = raza;
