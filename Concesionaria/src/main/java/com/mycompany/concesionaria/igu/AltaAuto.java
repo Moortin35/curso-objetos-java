@@ -12,7 +12,7 @@ public class AltaAuto extends javax.swing.JFrame {
     
     ControladoraLogica controladoraLog = new ControladoraLogica();
 
-    @SuppressWarnings("unchecked")
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
