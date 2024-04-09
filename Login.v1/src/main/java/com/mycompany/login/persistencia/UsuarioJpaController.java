@@ -1,55 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.login.persistencia;
 
-import java.io.Serializable;
-import javax.persistence.Query;
-import javax.persistence.EntityNotFoundException;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import com.mycompany.login.logica.Rol;
 import com.mycompany.login.logica.Usuario;
 import com.mycompany.login.persistencia.exceptions.NonexistentEntityException;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.Persistence;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
-/**
- *
- * @author Mortin
- */
 public class UsuarioJpaController implements Serializable {
 
     public UsuarioJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
-
-    public EntityManager getEntityManager() {
-        return emf.createEntityManager();
-    }
     
     public UsuarioJpaController() {
         emf = Persistence.createEntityManagerFactory("loginPU");
     }
+
+    public EntityManager getEntityManager() {
+        return emf.createEntityManager();
+    }
+
     public void create(Usuario usuario) {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Rol rolDeUsuario = usuario.getRolDeUsuario();
-            if (rolDeUsuario != null) {
-                rolDeUsuario = em.getReference(rolDeUsuario.getClass(), rolDeUsuario.getId());
-                usuario.setRolDeUsuario(rolDeUsuario);
-            }
             em.persist(usuario);
-            if (rolDeUsuario != null) {
-                rolDeUsuario.getListaUsuarios().add(usuario);
-                rolDeUsuario = em.merge(rolDeUsuario);
-            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -63,22 +46,7 @@ public class UsuarioJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Usuario persistentUsuario = em.find(Usuario.class, usuario.getId());
-            Rol rolDeUsuarioOld = persistentUsuario.getRolDeUsuario();
-            Rol rolDeUsuarioNew = usuario.getRolDeUsuario();
-            if (rolDeUsuarioNew != null) {
-                rolDeUsuarioNew = em.getReference(rolDeUsuarioNew.getClass(), rolDeUsuarioNew.getId());
-                usuario.setRolDeUsuario(rolDeUsuarioNew);
-            }
             usuario = em.merge(usuario);
-            if (rolDeUsuarioOld != null && !rolDeUsuarioOld.equals(rolDeUsuarioNew)) {
-                rolDeUsuarioOld.getListaUsuarios().remove(usuario);
-                rolDeUsuarioOld = em.merge(rolDeUsuarioOld);
-            }
-            if (rolDeUsuarioNew != null && !rolDeUsuarioNew.equals(rolDeUsuarioOld)) {
-                rolDeUsuarioNew.getListaUsuarios().add(usuario);
-                rolDeUsuarioNew = em.merge(rolDeUsuarioNew);
-            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -107,11 +75,6 @@ public class UsuarioJpaController implements Serializable {
                 usuario.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The usuario with id " + id + " no longer exists.", enfe);
-            }
-            Rol rolDeUsuario = usuario.getRolDeUsuario();
-            if (rolDeUsuario != null) {
-                rolDeUsuario.getListaUsuarios().remove(usuario);
-                rolDeUsuario = em.merge(rolDeUsuario);
             }
             em.remove(usuario);
             em.getTransaction().commit();

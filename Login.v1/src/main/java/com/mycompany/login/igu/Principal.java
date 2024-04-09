@@ -1,7 +1,6 @@
 package com.mycompany.login.igu;
 
 import com.mycompany.login.logica.ControladoraLogica;
-import com.mycompany.login.logica.Usuario;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -161,26 +160,8 @@ public class Principal extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         String usuario = txtUsuario.getText();
         String contrasenia = txtContrasenia.getText();
-        Usuario usr = controladoraLog.validarUsuario(usuario, contrasenia);
-        
-        if(usr != null){
-            String rol = usr.getRolDeUsuario().getNombreRol();
-                if(rol.equals("admin")){
-                    AdminInterface pantallaAdmin = new AdminInterface(controladoraLog, usr);
-                    pantallaAdmin.setVisible(true);
-                    pantallaAdmin.setLocationRelativeTo(null);
-                    this.dispose();
-                }
-                else if(rol.equals("user")){
-                    UserInterface pantallaUser = new UserInterface(controladoraLog, usr);
-                    pantallaUser.setVisible(true);
-                    pantallaUser.setLocationRelativeTo(null);
-                    this.dispose();
-                }
-                else{
-                    areaInfo.setText("Usuario o contraseña incorrectos");
-                }
-        }
+        String mensaje = controladoraLog.validarUsuario(usuario, contrasenia);
+        areaInfo.setText(mensaje);
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed

@@ -5,44 +5,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
-    private String nombreUsuario;
+    private String usuario;
     private String contrasenia;
-    @ManyToOne
-    @JoinColumn(name="fk_rol")
-    private Rol rolDeUsuario;
 
     public Usuario() {
     }
 
-    public Usuario(int id, String nombreUsuario, String contrasenia, Rol rolDeUsuario) {
+    public Usuario(int id, String usuario, String contrasenia) {
         this.id = id;
-        this.nombreUsuario = nombreUsuario;
+        this.usuario = usuario;
         this.contrasenia = contrasenia;
-        this.rolDeUsuario = rolDeUsuario;
-    }
-    
-    public Rol getRolDeUsuario() {
-        return rolDeUsuario;
-    }
-
-    public void setRolDeUsuario(Rol rolDeUsuario) {
-        this.rolDeUsuario = rolDeUsuario;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
     }
 
     public int getId() {
@@ -51,6 +29,14 @@ public class Usuario implements Serializable {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 
     public String getContrasenia() {

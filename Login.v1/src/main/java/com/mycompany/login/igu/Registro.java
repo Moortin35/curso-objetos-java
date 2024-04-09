@@ -3,12 +3,13 @@ package com.mycompany.login.igu;
 import com.mycompany.login.logica.ControladoraLogica;
 import com.mycompany.login.logica.Usuario;
 
-public class Principal extends javax.swing.JFrame {
-
-    ControladoraLogica controladoraLog = null;
-    public Principal() {
+public class Registro extends javax.swing.JFrame {
+        
+        ControladoraLogica ControladoraLog = null;
+    
+    public Registro() {
         initComponents();
-        controladoraLog = new ControladoraLogica();
+        ControladoraLog = new ControladoraLogica();
     }
 
     @SuppressWarnings("unchecked")
@@ -19,20 +20,19 @@ public class Principal extends javax.swing.JFrame {
         ttLogin = new javax.swing.JLabel();
         ttPass = new javax.swing.JLabel();
         ttUser = new javax.swing.JLabel();
+        txtContrasenia = new javax.swing.JTextField();
         txtUsuario = new javax.swing.JTextField();
-        btnIngresar = new javax.swing.JButton();
         btnRegistrarse = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         areaInfo = new javax.swing.JTextArea();
-        txtContrasenia = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         ttLogin.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         ttLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ttLogin.setText("Login");
+        ttLogin.setText("Registrarse");
 
         ttPass.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         ttPass.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -42,11 +42,9 @@ public class Principal extends javax.swing.JFrame {
         ttUser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ttUser.setText("Usuario");
 
-        btnIngresar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnIngresar.setText("Ingresar");
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
+                txtContraseniaActionPerformed(evt);
             }
         });
 
@@ -66,24 +64,17 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
-        areaInfo.setEditable(false);
         areaInfo.setColumns(20);
         areaInfo.setRows(5);
         jScrollPane1.setViewportView(areaInfo);
-
-        txtContrasenia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtContraseniaActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,28 +86,27 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ttUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(ttPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtContrasenia))
-                .addGap(83, 83, 83))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ttUser, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(ttPass, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(83, 83, 83))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(104, 104, 104))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,18 +119,16 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ttPass, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtContrasenia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(26, 26, 26)
+                .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 90, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegistrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16))
         );
 
@@ -158,35 +146,41 @@ public class Principal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String usuario = txtUsuario.getText();
-        String contrasenia = txtContrasenia.getText();
-        Usuario usr = controladoraLog.validarUsuario(usuario, contrasenia);
-        
-        if(usr != null){
-            String rol = usr.getRolDeUsuario().getNombreRol();
-                if(rol.equals("admin")){
-                    AdminInterface pantallaAdmin = new AdminInterface(controladoraLog, usr);
-                    pantallaAdmin.setVisible(true);
-                    pantallaAdmin.setLocationRelativeTo(null);
-                    this.dispose();
-                }
-                else if(rol.equals("user")){
-                    UserInterface pantallaUser = new UserInterface(controladoraLog, usr);
-                    pantallaUser.setVisible(true);
-                    pantallaUser.setLocationRelativeTo(null);
-                    this.dispose();
-                }
-                else{
-                    areaInfo.setText("Usuario o contraseña incorrectos");
-                }
-        }
-    }//GEN-LAST:event_btnIngresarActionPerformed
+    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseniaActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        Registro pantallaReg = new Registro();
-        pantallaReg.setVisible(true);
-        pantallaReg.setLocationRelativeTo(null);
+        String usuario = null;
+        String contrasenia = null;
+        String mensaje;
+        if(!txtUsuario.getText().isEmpty()){
+            if(!txtContrasenia.getText().isEmpty()){
+                usuario = txtUsuario.getText();
+                contrasenia = txtContrasenia.getText();
+                //Si no existe el usuario lo crea
+                if(!corroborarExistenciaUsuario(usuario)){
+                    ControladoraLog.registrar(usuario, contrasenia);
+                    mensaje = "Registro completado!";
+                    areaInfo.setText(mensaje);
+                    txtUsuario.setText("");
+                    txtContrasenia.setText("");
+                }//Si existe entonces:
+                else{
+                    mensaje = "Este usuario ya existe!";
+                    areaInfo.setText(mensaje);
+                }
+
+            }
+            else{
+                mensaje = "No se ha ingresado contraseña";
+                areaInfo.setText(mensaje);
+            }
+        }
+        else{
+            mensaje = "No se ha ingresado usuario";
+            areaInfo.setText(mensaje);
+        } 
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -195,27 +189,25 @@ public class Principal extends javax.swing.JFrame {
         areaInfo.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        this.dispose();
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void txtContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseniaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseniaActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+         this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea areaInfo;
-    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JButton btnRegistrarse;
-    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel ttLogin;
     private javax.swing.JLabel ttPass;
     private javax.swing.JLabel ttUser;
-    private javax.swing.JPasswordField txtContrasenia;
+    private javax.swing.JTextField txtContrasenia;
     private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    public boolean corroborarExistenciaUsuario(String usuario) {
+        return ControladoraLog.corroborarExistenciaUsuario(usuario);
+    }
 }
