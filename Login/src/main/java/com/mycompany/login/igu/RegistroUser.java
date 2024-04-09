@@ -3,11 +3,11 @@ package com.mycompany.login.igu;
 import com.mycompany.login.logica.ControladoraLogica;
 import com.mycompany.login.logica.Usuario;
 
-public class Registro extends javax.swing.JFrame {
+public class RegistroUser extends javax.swing.JFrame {
         
         ControladoraLogica ControladoraLog = null;
     
-    public Registro() {
+    public RegistroUser() {
         initComponents();
         ControladoraLog = new ControladoraLogica();
     }
@@ -154,13 +154,14 @@ public class Registro extends javax.swing.JFrame {
         String usuario = null;
         String contrasenia = null;
         String mensaje;
+        String rol = null;
         if(!txtUsuario.getText().isEmpty()){
             if(!txtContrasenia.getText().isEmpty()){
                 usuario = txtUsuario.getText();
                 contrasenia = txtContrasenia.getText();
                 //Si no existe el usuario lo crea
                 if(!corroborarExistenciaUsuario(usuario)){
-                    ControladoraLog.registrar(usuario, contrasenia);
+                    ControladoraLog.registrar(usuario, contrasenia, "user");
                     mensaje = "Registro completado!";
                     areaInfo.setText(mensaje);
                     txtUsuario.setText("");
@@ -191,6 +192,9 @@ public class Registro extends javax.swing.JFrame {
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
          this.dispose();
+         Principal pantallaPrincipal = new Principal();
+         pantallaPrincipal.setVisible(true);
+         pantallaPrincipal.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnVolverActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

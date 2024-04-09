@@ -2,6 +2,8 @@ package com.mycompany.login.igu;
 
 import com.mycompany.login.logica.ControladoraLogica;
 import com.mycompany.login.logica.Usuario;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 public class UserInterface extends javax.swing.JFrame {
     
@@ -24,7 +26,7 @@ public class UserInterface extends javax.swing.JFrame {
         tablaUsuarios = new javax.swing.JTable();
         panelBotones = new javax.swing.JPanel();
         btnRecargar = new javax.swing.JButton();
-        btnSalir = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         tituloPanel = new javax.swing.JLabel();
         txtUserLogged = new javax.swing.JTextField();
 
@@ -66,10 +68,10 @@ public class UserInterface extends javax.swing.JFrame {
             }
         });
 
-        btnSalir.setText("Salir");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
 
@@ -80,7 +82,7 @@ public class UserInterface extends javax.swing.JFrame {
             .addGroup(panelBotonesLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnSalir, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                    .addComponent(btnVolver, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
                     .addComponent(btnRecargar, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -90,7 +92,7 @@ public class UserInterface extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnRecargar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -147,24 +149,56 @@ public class UserInterface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         this.dispose();
+        Principal pantallaPrincipal = new Principal();
+        pantallaPrincipal.setVisible(true);
+        pantallaPrincipal.setLocationRelativeTo(null);
         
-    }//GEN-LAST:event_btnSalirActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnRecargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRecargarActionPerformed
-        // TODO add your handling code here:
+        cargarTabla();
     }//GEN-LAST:event_btnRecargarActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.txtUserLogged.setText(usr.getNombreUsuario());
+        cargarTabla();
     }//GEN-LAST:event_formWindowOpened
     
+    private void cargarTabla() {
+        //Defino el modelo que queremos que tenga la tabla
+        DefaultTableModel modeloTabla = new DefaultTableModel(){
+            //Que fila y columnas no sean editables
+            @Override
+            public boolean isCellEditable(int row, int column){
+                return false;
+            }
+        };
+        //Establecemos los nombres de las columnas
+        String titulos[] = {"Id", "Usuario", "Rol"};
+        modeloTabla.setColumnIdentifiers(titulos);
+        
+        //Traemos la lista de usuarios:
+        List<Usuario> listaUsuarios = controladoraLog.traerUsuarios();
+        //Consultamos si la lista esta vacía
+        if(listaUsuarios != null){
+            //Recorro lista y por cada usuario lo cargo a la tabla
+            for(Usuario usr : listaUsuarios){
+                Object[] objeto = {usr.getId(), usr.getNombreUsuario(), 
+                        usr.getRolDeUsuario().getNombreRol()};
+                modeloTabla.addRow(objeto);
+            }
+        }
+        
+                
+        tablaUsuarios.setModel(modeloTabla);
+    }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRecargar;
-    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelPrincipal;
@@ -173,4 +207,6 @@ public class UserInterface extends javax.swing.JFrame {
     private javax.swing.JLabel tituloPanel;
     private javax.swing.JTextField txtUserLogged;
     // End of variables declaration//GEN-END:variables
+
+
 }

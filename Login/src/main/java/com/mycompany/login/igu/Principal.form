@@ -63,7 +63,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="ttUser" max="32767" attributes="0"/>
-                      <Component id="txtUsuario" pref="150" max="32767" attributes="0"/>
+                      <Component id="txtnombreUsuario" pref="150" max="32767" attributes="0"/>
                       <Component id="ttPass" max="32767" attributes="0"/>
                       <Component id="txtContrasenia" alignment="1" max="32767" attributes="0"/>
                   </Group>
@@ -84,7 +84,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="ttUser" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="txtUsuario" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtnombreUsuario" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="ttPass" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -134,7 +134,7 @@
             <Property name="text" type="java.lang.String" value="Usuario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUsuario">
+        <Component class="javax.swing.JTextField" name="txtnombreUsuario">
         </Component>
         <Component class="javax.swing.JButton" name="btnIngresar">
           <Properties>

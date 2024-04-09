@@ -19,7 +19,7 @@ public class Principal extends javax.swing.JFrame {
         ttLogin = new javax.swing.JLabel();
         ttPass = new javax.swing.JLabel();
         ttUser = new javax.swing.JLabel();
-        txtUsuario = new javax.swing.JTextField();
+        txtnombreUsuario = new javax.swing.JTextField();
         btnIngresar = new javax.swing.JButton();
         btnRegistrarse = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
@@ -109,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(ttUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                    .addComponent(txtnombreUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                     .addComponent(ttPass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(txtContrasenia))
                 .addGap(83, 83, 83))
@@ -126,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ttUser, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtnombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(ttPass, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -159,38 +159,40 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        String usuario = txtUsuario.getText();
+        this.dispose();
+        String nombreUsuario = txtnombreUsuario.getText();
         String contrasenia = txtContrasenia.getText();
-        Usuario usr = controladoraLog.validarUsuario(usuario, contrasenia);
+        Usuario usr = controladoraLog.validarUsuario(nombreUsuario, contrasenia);
         
         if(usr != null){
             String rol = usr.getRolDeUsuario().getNombreRol();
-                if(rol.equals("admin")){
-                    AdminInterface pantallaAdmin = new AdminInterface(controladoraLog, usr);
-                    pantallaAdmin.setVisible(true);
-                    pantallaAdmin.setLocationRelativeTo(null);
-                    this.dispose();
-                }
-                else if(rol.equals("user")){
-                    UserInterface pantallaUser = new UserInterface(controladoraLog, usr);
-                    pantallaUser.setVisible(true);
-                    pantallaUser.setLocationRelativeTo(null);
-                    this.dispose();
-                }
-                else{
-                    areaInfo.setText("Usuario o contraseña incorrectos");
-                }
+            if(rol.equals("admin")){
+                AdminInterface pantallaAdmin = new AdminInterface(controladoraLog, usr);
+                pantallaAdmin.setVisible(true);
+                pantallaAdmin.setLocationRelativeTo(null);
+                this.dispose();
+            }
+            if(rol.equals("user")){
+                UserInterface pantallaUser = new UserInterface(controladoraLog, usr);
+                pantallaUser.setVisible(true);
+                pantallaUser.setLocationRelativeTo(null);
+                this.dispose();
+            }   
+        }
+        else{
+            areaInfo.setText("Usuario o contraseña incorrectos");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        Registro pantallaReg = new Registro();
+        this.dispose();
+        RegistroUser pantallaReg = new RegistroUser();
         pantallaReg.setVisible(true);
         pantallaReg.setLocationRelativeTo(null);
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txtUsuario.setText("");
+        txtnombreUsuario.setText("");
         txtContrasenia.setText("");
         areaInfo.setText("");
     }//GEN-LAST:event_btnLimpiarActionPerformed
@@ -216,6 +218,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel ttPass;
     private javax.swing.JLabel ttUser;
     private javax.swing.JPasswordField txtContrasenia;
-    private javax.swing.JTextField txtUsuario;
+    private javax.swing.JTextField txtnombreUsuario;
     // End of variables declaration//GEN-END:variables
 }

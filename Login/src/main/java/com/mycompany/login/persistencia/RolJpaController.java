@@ -32,11 +32,11 @@ public class RolJpaController implements Serializable {
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
-
-    public RolJpaController() {
+    
+    public RolJpaController(){
         emf = Persistence.createEntityManagerFactory("loginPU");
     }
-    
+
     public void create(Rol rol) {
         if (rol.getListaUsuarios() == null) {
             rol.setListaUsuarios(new ArrayList<Usuario>());
